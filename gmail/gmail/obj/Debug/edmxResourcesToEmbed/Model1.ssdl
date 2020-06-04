@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="socialnetworkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="post_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="comment_text" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="comment_like">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="comment_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="education">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="college_name" Type="varchar" MaxLength="50" />
+    <Property Name="college_join_date" Type="varchar" MaxLength="50" />
+    <Property Name="address_of_college" Type="varchar" MaxLength="100" />
+    <Property Name="secondary_school" Type="varchar" MaxLength="10" />
+    <Property Name="school_join_date" Type="varchar" MaxLength="50" />
+    <Property Name="address_of_school" Type="varchar" MaxLength="100" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="friend">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="user_friend_id" Type="int" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="friend_request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sender_id" Type="int" Nullable="false" />
+    <Property Name="receive_user_id" Type="int" Nullable="false" />
+    <Property Name="request_status" Type="int" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="hobbies">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="hobbies" Type="varchar" MaxLength="30" />
+    <Property Name="favorite_tv_shows" Type="varchar" MaxLength="30" />
+    <Property Name="favorite_movies" Type="varchar" MaxLength="30" />
+    <Property Name="favorite_games" Type="varchar" MaxLength="30" />
+    <Property Name="favorite_books" Type="varchar" MaxLength="30" />
+    <Property Name="favorite_writers" Type="varchar" MaxLength="30" />
+    <Property Name="other_interest" Type="varchar" MaxLength="30" />
+    <Property Name="create_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="notification_type" Type="int" Nullable="false" />
+    <Property Name="sender_id" Type="int" />
+    <Property Name="post_id" Type="int" Nullable="false" />
+    <Property Name="comment_id" Type="int" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="otp-table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="otp_table" Type="int" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="post">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="post_type" Type="int" />
+    <Property Name="description" Type="varchar" MaxLength="200" />
+    <Property Name="media_path" Type="varchar" MaxLength="200" />
+    <Property Name="create_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="post_like">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="post_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="user_name_id" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="user_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_gender" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="user_contect" Type="varchar" MaxLength="12" />
+    <Property Name="user_website" Type="varchar" MaxLength="50" />
+    <Property Name="user_dateofbirth" Type="varchar" MaxLength="50" />
+    <Property Name="user_coverphoto" Type="varchar" MaxLength="150" />
+    <Property Name="user_profilephoto" Type="varchar" MaxLength="150" />
+    <Property Name="user_bio" Type="varchar" MaxLength="100" />
+    <Property Name="user_birthplace" Type="varchar" MaxLength="50" />
+    <Property Name="user_livesin" Type="varchar" MaxLength="10" />
+    <Property Name="user_occupation" Type="varchar" MaxLength="50" />
+    <Property Name="user_is_private" Type="varchar" MaxLength="10" />
+    <Property Name="user_status" Type="varchar" MaxLength="50" />
+    <Property Name="user_merriage_status" Type="varchar" MaxLength="10" />
+    <Property Name="create_date" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="socialnetworkModelStoreContainer">
+    <EntitySet Name="comment" EntityType="Self.comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="comment_like" EntityType="Self.comment_like" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="education" EntityType="Self.education" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="friend" EntityType="Self.friend" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="friend_request" EntityType="Self.friend_request" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hobbies" EntityType="Self.hobbies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="notification" EntityType="Self.notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="otp-table" EntityType="Self.otp-table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="post" EntityType="Self.post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="post_like" EntityType="Self.post_like" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

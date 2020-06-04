@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="socialnetworkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="post_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="comment_text" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="comment_like">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="comment_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="education">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="college_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="college_join_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address_of_college" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="secondary_school" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="school_join_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address_of_school" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="friend">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="user_friend_id" Type="Int32" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="friend_request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sender_id" Type="Int32" Nullable="false" />
+    <Property Name="receive_user_id" Type="Int32" Nullable="false" />
+    <Property Name="request_status" Type="Int32" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="hobby">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="hobbies" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="favorite_tv_shows" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="favorite_movies" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="favorite_games" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="favorite_books" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="favorite_writers" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="other_interest" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="notification_type" Type="Int32" Nullable="false" />
+    <Property Name="sender_id" Type="Int32" />
+    <Property Name="post_id" Type="Int32" Nullable="false" />
+    <Property Name="comment_id" Type="Int32" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="otp_table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="otp_table1" Type="Int32" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="post">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="post_type" Type="Int32" />
+    <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="media_path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="post_like">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="post_id" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_name_id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="user_contect" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="user_website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_dateofbirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_coverphoto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="user_profilephoto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="user_bio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="user_birthplace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_livesin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="user_occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_is_private" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="user_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_merriage_status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="socialnetworkEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="comments" EntityType="Self.comment" />
+    <EntitySet Name="comment_like" EntityType="Self.comment_like" />
+    <EntitySet Name="educations" EntityType="Self.education" />
+    <EntitySet Name="friends" EntityType="Self.friend" />
+    <EntitySet Name="friend_request" EntityType="Self.friend_request" />
+    <EntitySet Name="hobbies" EntityType="Self.hobby" />
+    <EntitySet Name="notifications" EntityType="Self.notification" />
+    <EntitySet Name="otp_table" EntityType="Self.otp_table" />
+    <EntitySet Name="posts" EntityType="Self.post" />
+    <EntitySet Name="post_like" EntityType="Self.post_like" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="users" EntityType="Self.user" />
+  </EntityContainer>
+</Schema>
